@@ -30,3 +30,11 @@ kf= KFold(n_splits=5,shuffle=True,random_state=42)
 #---------- Step3: Model -------------------------
 
 model=LinearRegression()
+
+'''
+HINT:
+https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html
+
+my_params= { 'fit_intercept': [True,False] }
+
+'''
