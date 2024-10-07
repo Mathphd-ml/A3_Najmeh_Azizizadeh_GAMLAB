@@ -8,9 +8,8 @@ JAVAB DADE SHOD ( BAD AZ KHOONDAN INJARO PAK KONID)
 JAVAB ---> KHATE 110
 khate 145
 
-
-
-
+Kheili mamnoonam Ostad.
+Bale chashm
 
 
 
@@ -99,7 +98,7 @@ cv=gs.cv_results_
 
 model=RandomForestRegressor(random_state=42)
 
-my_params={ 'n_estimator':[10,20,30,40,50,100],
+my_params={ 'n_estimators':[10,20,30,40,50,100],
            'max_features':[1,2,3,4,5,6,7],
            'max_depth':[2,3,4,5,7,8]}
 
