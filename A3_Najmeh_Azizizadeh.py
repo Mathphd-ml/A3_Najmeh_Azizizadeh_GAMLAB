@@ -2,6 +2,20 @@
 Created on Fri Oct  4 23:51:38 2024
 
 @author: Najmeh Azizizadeh
+
+JAVAB DADE SHOD ( BAD AZ KHOONDAN INJARO PAK KONID)
+
+JAVAB ---> KHATE 110
+khate 145
+
+
+
+
+
+
+
+
+
 """
 
 #-----------Import Libs----------------------
@@ -93,6 +107,20 @@ my_params={ 'n_estimator':[10,20,30,40,50,100],
 Bebakhshid inja eshkal daram. fit ro anjam nemide. fekr konam params eshtebah neveshtam.
 '''
 
+'''
+hamishe say konid b documentation berid
+documentatione randomforest:
+https://scikit-learn.org/1.5/modules/generated/sklearn.ensemble.RandomForestRegressor.html
+
+n_estimator nist
+n_estimators
+s tahesh ro nazashtid 
+
+
+
+'''
+
+
 
 gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
 
@@ -114,6 +142,16 @@ my_params={'kernel':['poly','rbf','linear'],
 Bebakhshid inja fit ro anjam nemide. yani laptopam hang mikone. hich kari ro baad az fit anjam nemide, majbooram az spyder biyam biroon.
 '''
 
+'''
+harmoghe k run nashod kh sade samte rast paeen hamonja ke result ro neshon mide (behehs migan console) oonja
+ye morabaye ghermez hast chanbar bznid --> intrupt by user mishe yani ghat shode tavasote shoma (user)
+yeki az dalayele run nashodan ine ke shayad tool mikeshe, choon fit mitone 10 daghighe ya 100 daghighe ya 2,3 rooz beshe ( vaghty ba big data ya big hypeparameters tarafim)
+ama yeki dg az dalayel ine ke laptobe shoma C bishtar az 1 ro ejaze nmide pas my_params to 10 ro hazf konid ag nshod baz bgid
+
+**yadeton nare bad az doros krdne hameye ina , hazf konid comment harye man ro 
+moafagh bashid
+
+'''
 gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
 
 #-----------Step4:  fit -------------------------------
