@@ -4,13 +4,8 @@ Created on Fri Oct  4 23:51:38 2024
 @author: Najmeh Azizizadeh
 
 
-Kheili mamnoonam Ostad.
-Bale chashm
-alan fahmidam bayad be oon morabe ghrmez tavjjoh konam.
-ravesh SVR hodoode three hours tool keshid va javab dad.
-mamnoonam az rahnamaee shoma
+Bale Chashm Ostad.
 
-Alan bayad dige chekar anjam bedam?
 ---javab----
 salam arz shdo, darsad haye erroreton balast yani deghateton nahayat 74 ina hast , decision tree, random forest va svr ba hypeparameter ha bazi konid brid]
 dakhele documentation baghie hypeparameter haro ezafe koid t abetonid hadeaghal 90% deghat bgeirid
