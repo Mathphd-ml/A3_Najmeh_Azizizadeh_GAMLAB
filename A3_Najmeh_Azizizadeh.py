@@ -11,7 +11,12 @@ ravesh SVR hodoode three hours tool keshid va javab dad.
 mamnoonam az rahnamaee shoma
 
 Alan bayad dige chekar anjam bedam?
+---javab----
+salam arz shdo, darsad haye erroreton balast yani deghateton nahayat 74 ina hast , decision tree, random forest va svr ba hypeparameter ha bazi konid brid]
+dakhele documentation baghie hypeparameter haro ezafe koid t abetonid hadeaghal 90% deghat bgeirid
 
+nokte---> MAPE --> vaghti mige -0.24 yani --> 0.24 yani 24 / 100 --> yani 24% khata (error)---> yani 100-24--> 76% deghat. shoma bayad ye adad hodode
+-0.10 begirid yani --> 10% khata ya --> 100 - 10 = 90% deghat
 
 
 """
