@@ -4,15 +4,9 @@ Created on Fri Oct  4 23:51:38 2024
 @author: Najmeh Azizizadeh
 
 
-Bale Chashm Ostad.
-
----javab----
-salam arz shdo, darsad haye erroreton balast yani deghateton nahayat 74 ina hast , decision tree, random forest va svr ba hypeparameter ha bazi konid brid]
-dakhele documentation baghie hypeparameter haro ezafe koid t abetonid hadeaghal 90% deghat bgeirid
-
-nokte---> MAPE --> vaghti mige -0.24 yani --> 0.24 yani 24 / 100 --> yani 24% khata (error)---> yani 100-24--> 76% deghat. shoma bayad ye adad hodode
--0.10 begirid yani --> 10% khata ya --> 100 - 10 = 90% deghat
-
+Salam Ostad
+SVR kheili kond shode, man faghat gamma ro ezafeh kardam. 48 saat run shod vali javab nadad.
+Random forest ham max_depth bozorgtar zadam vali baad az 30 saat run javab nadad, stop kardam.
 
 """
 
@@ -64,16 +58,17 @@ cv=gs.cv_results_
 
 model= KNeighborsRegressor()
 
-my_params= { 'n_neighbors':[2,3,4,7,8,9],
-            'metric':['minkowski'  , 'euclidean' , 'manhattan'] }
+my_params= { 'n_neighbors':[3,5,7,8,9],
+            'metric':['minkowski'  , 'euclidean' , 'manhattan'],
+           'weights':['uniform','distance']}
 
 
 gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
 
 #-----------Step4:  fit -------------------------------
 gs.fit(x,y)
-gs.best_score_     #np.float64(-0.4847991767838546)
-gs.best_params_    #{'metric': 'manhattan', 'n_neighbors': 4}
+gs.best_score_     #np.float64(-0.0.478347758446281)
+gs.best_params_    #{'metric': 'manhattan', 'n_neighbors': 5, 'weights': 'distance'}
 cv=gs.cv_results_
 
 #------------------------------------------------------------------------------
@@ -81,15 +76,23 @@ cv=gs.cv_results_
 
 model=DecisionTreeRegressor(random_state=42)
 
-my_params={ 'max_depth':[1,2,3,4,5,7,8,10]}
+my_params={ 'max_depth':[1,2,3,24,21,17,22,10],
+           'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+           'splitter':['best','random'],'max_leaf_nodes':[798,810,805]}
 
 
 gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
 
 #-----------Step4:  fit -------------------------------
 gs.fit(x,y)
-gs.best_score_     #np.float64(-0.24051815083527037)
-gs.best_params_    #{'max_depth': 10}
+gs.best_score_     #np.float64(-0.22072829758907314)
+gs.best_params_   
+'''
+ {'criterion': 'absolute_error',
+ 'max_depth': 21,
+ 'max_leaf_nodes': 805,
+ 'splitter': 'random'}
+ '''
 cv=gs.cv_results_
 
 #------------------------------------------------------------------------------
@@ -97,9 +100,10 @@ cv=gs.cv_results_
 
 model=RandomForestRegressor(random_state=42)
 
-my_params={ 'n_estimators':[10,20,30,70],
+my_params={ 'n_estimators':[10,20,30,70,90],
            'max_features':[1,2,3,4,5,6,7],
-           'max_depth':[2,3,4,5,7,8]}
+           'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+           'max_depth':[2,3,4,25]}
 
 
 
@@ -107,8 +111,8 @@ gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_erro
 
 #-----------Step4:  fit -------------------------------
 gs.fit(x,y)
-gs.best_score_   #   np.float64(-0.23638255779254744)
-gs.best_params_    #{'max_depth': 8, 'max_features': 7, 'n_estimators': 70}
+gs.best_score_   #   np.float64(-0.1818179719877024)
+gs.best_params_    #{'max_depth': 25, 'max_features': 4, 'n_estimators': 90}
 cv=gs.cv_results_
 
 #------------------------------------------------------------------------------
