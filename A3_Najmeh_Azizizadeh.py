@@ -5,8 +5,7 @@ Created on Fri Oct  4 23:51:38 2024
 
 
 Salam Ostad
-SVR kheili kond shode, man faghat gamma ro ezafeh kardam. 48 saat run shod vali javab nadad.
-Random forest ham max_depth bozorgtar zadam vali baad az 30 saat run javab nadad, stop kardam.
+ba dastoorati farmoodid kheili behtar shod sorat run.
 
 """
 
