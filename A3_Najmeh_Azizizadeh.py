@@ -6,6 +6,11 @@ Created on Fri Oct  4 23:51:38 2024
 
 Salam Ostad
 ba dastoorati farmoodid kheili behtar shod sorat run.
+************
+APM:
+dar ghesmate SVR man yek raveshe jadid zadam ( normal kardane data ha) , hala run konid va agar darsadeton kamtar az -0.1 bod
+paksazi konid va moratab benevisid va dar enteha ghesmate report bezarid va kamel begid data chi boode va che model haee netekhab kardid harkodom darsade deghat cheghadr
+bode va kodom behtar bode va sabt konid baraye reporte final (payani)
 
 """
 
@@ -125,7 +130,16 @@ my_params={'kernel':['poly','rbf','linear'],
 gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
 
 #-----------Step4:  fit -------------------------------
-gs.fit(x,y)
+#******
+from sklearn.preprocessing import MinMaxScaler
+scaler=MinMaxScaler()
+x_scaled=scaler.fit_transform(x) 
+
+
+#gs.fit(x,y)
+#hala fit mikonim b x_scaled ke x haro too range 0 ta 1 ovordim
+#*** in kar baes mishe hame dataha normal beshan ham sorat behtar mishe ham deghat
+gs.fit(x_scaled,y)
 gs.best_score_     #np.float64(-0.29294216082111857)
 gs.best_params_    #{'C': 0.01, 'kernel': 'linear'}   
 cv=gs.cv_results_
