@@ -2,6 +2,12 @@
 Created on Fri Oct  4 23:51:38 2024
 
 @author: Najmeh Azizizadeh
+#*****************
+salam okeye va awlie fgth ghesmate report yadeton nare oon enteha bezarid va kamel va daghigh besorate 2 paragraph 
+inek data ha chi bode , vorodi chi bode , khoroji chi boode, hadaf chi bode  har model ch scori dade va va va....
+moafagh bashid
+
+
 
 
 Salam Ostad
