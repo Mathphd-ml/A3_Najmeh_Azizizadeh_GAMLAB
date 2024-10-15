@@ -2,26 +2,18 @@
 Created on Fri Oct  4 23:51:38 2024
 
 @author: Najmeh Azizizadeh
-#*****************
-salam okeye va awlie fgth ghesmate report yadeton nare oon enteha bezarid va kamel va daghigh besorate 2 paragraph 
-inek data ha chi bode , vorodi chi bode , khoroji chi boode, hadaf chi bode  har model ch scori dade va va va....
-moafagh bashid
-
-
-
-
+#---------------------------
+'''
 Salam Ostad
-darsadhay jadid ro neveshtam.
-kheili run gereftam. Inha behtarin boodan, vali hanooz be deghat 90% nareside.
-mishe lotfan negahi befarmaeed.
-************
-APM:
-dar ghesmate SVR man yek raveshe jadid zadam ( normal kardane data ha) , hala run konid va agar darsadeton kamtar az -0.1 bod
-paksazi konid va moratab benevisid va dar enteha ghesmate report bezarid va kamel begid data chi boode va che model haee netekhab kardid harkodom darsade deghat cheghadr
-bode va kodom behtar bode va sabt konid baraye reporte final (payani)
+Natayej nahaeei ra vared kardam.
+faghat bebakhshid dar ravesh SVR vaghti c=1 migozashtam, kheili tool mikeshid(5 saat bishtar ke dighe motevaghefash mikardam) hata ba scale kardan. 
+baraye hamin shayad deghat model man khoob nashodeh.
+Rasm ham nafahmidam chetor har 5 ravesh ra mitoonam dar yek nemoodar biyavaram. ye dastoor koli neveshtam.
 
-"""
-
+Dar payan ham az shoma besyar sepasgozaram, babate elmi ke behem yad dadid, hich vaght fekr nimikardam betoonam Python ra yad begiram va azash khosham biyad.
+shoma aali tadris mikonid, Mamnoonam.
+Movafaghiyathayetan roozafzoon.
+'''
 #-----------Import Libs----------------------
 import numpy as np
 import pandas as pd
@@ -88,25 +80,28 @@ cv=gs.cv_results_
 
 model=DecisionTreeRegressor(random_state=42)
 
-my_params={ 'max_depth':[1,2,3,24,21,17,32,10],
+my_params={ 'max_depth':[24,35,17,12,21],
            'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-           'splitter':['best','random'],'max_leaf_nodes':[798,810,805]}
+           'max_features':[1,2,3,4,5,6,7],
+           'splitter':['best','random'],'max_leaf_nodes':[700,500,200,605]}
 
 
-gs=GridSearchCV(model,my_params,cv=kf,scoring='neg_mean_absolute_percentage_error')
+gs=GridSearchCV(model,my_params,cv=kf,n_jobs=-1,scoring='neg_mean_absolute_percentage_error')
 
 #-----------Step4:  fit -------------------------------
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler() 
 X_scaled = scaler.fit_transform(x)
 gs.fit(X_scaled,y)
-gs.best_score_     #np.float64(-0.2202894825724071)
+gs.best_score_     #np.float64(-0.2114834767005333)
 gs.best_params_   
 '''
  {'criterion': 'absolute_error',
- 'max_depth': 24,
- 'max_leaf_nodes': 805,
+ 'max_depth': 17,
+ 'max_features': 7,
+ 'max_leaf_nodes': 500,
  'splitter': 'best'}
+
  '''
 cv=gs.cv_results_
 
@@ -152,7 +147,6 @@ from sklearn.preprocessing import MinMaxScaler
 scaler=MinMaxScaler()
 x_scaled=scaler.fit_transform(x) 
 
-
 gs.fit(x_scaled,y)
 gs.best_score_     #np.float64(-0.2346791171309992)
 gs.best_params_
@@ -167,5 +161,40 @@ gs.best_params_
  'tol': 1e-06}
 ''' 
 cv=gs.cv_results_
+#------------------------------------------------------------------------------------
+#--------- Plot -----------------------------------------------
 
+plt.scatter(X_scaled[:,4],y)
+plt.xlabel('AveBedrms')
+plt.ylabel('Price')
+plt.legend()
+plt.grid()
+plt.show()
+#------------------------------------------------------------------------
+'''
+Report:
+  دیتا مربوط به 20640 خانه در کالیفرنبا است که 8 مولفه از آنها
+    رو بررسی کرده و در قسمت تارگت(هدف) قیمت خانه را آورده.
+x.data:  ['MedInc',
+   'HouseAge',
+   'AveRooms',
+   'AveBedrms',
+   'Population',
+   'AveOccup',
+   'Latitude',
+   'Longitude']  
+y.data: 'MedHouseVal'
+میخواهیم رابطه بین این مولفه های خانه ها را با قیمتشون در بیاوریم.
+با 5 روش این کار را انجام میدهیم و میخواهیم ببینیم که کدوم مدل بهترین پیش بینی را میدهد.
+(یعنی اگر خانه جدیدی را به مدل بدهیم بتواند قیمت را پیش بینی کنه)
+در ضمن چون قسمت هدف داده، مشخص و به صورت اعداد اعشاری میباشد(قیمت)
+ از شاخه Supervised Regression استفاده میکنیم.
+همچنین برای مدل های 2 تا 5 داده ها را نرمال کردیم.
 
+  مدل اول: رگرسیون خطی (Linear Regression) خطای مدل تقریباً 31% و دقت آن حدود 69% میباشد.
+  مدل دوم: نزدیکترین همسایگی (K-Nearest Neighbors) با خطای 21% و دقت تقریبی 79% است.
+  مدل سوم: درخت تصمیم(DecisionTree) با خطای حدود 21% و دقت 79%
+  مدل چهارم: جنگل تصادفی (Random Forest) با خطای تقریبی 17% و دقت تقریبا 83%
+  مدل پنجم: ماشین بردار پشتیبان(Support Vector Machine) خطای این روش تقریبا 23% و دقت 77% میباشد.
+بهترین مدل Random Forest است که دقت بهتر و بیشتری نسبت به سایر مدل ها دارد. 
+'''
