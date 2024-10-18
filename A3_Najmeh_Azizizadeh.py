@@ -1,3 +1,17 @@
+'''
+APM:
+Daryaft shod besiar awli
+aval inke khedmateton tabrik migam bnesiar awli , jozve daneshjoyane khobe dore bodid va awli pish raftid enshala dar ayande ham moafagh bashid
+khedmateton begam motasefane bekhatere algorithm haye riazi pichide gahan bazi az hypeparametr ha dakheel local minima mioftan k baes mishe hey iteration konan va tool bekeshe va in ghazie
+ziad pish miad.
+baraye rasm ham dakhele file LL_SOLUTION k bad az deadline ersal mishe tadris misahvad.
+moafagh bashid
+
+
+'''
+
+
+
 """
 Created on Fri Oct  4 23:51:38 2024
 
