@@ -7,26 +7,17 @@ ziad pish miad.
 baraye rasm ham dakhele file LL_SOLUTION k bad az deadline ersal mishe tadris misahvad.
 moafagh bashid
 
-
 '''
-
-
 
 """
 Created on Fri Oct  4 23:51:38 2024
-
 @author: Najmeh Azizizadeh
 #---------------------------
 '''
 Salam Ostad
-Natayej nahaeei ra vared kardam.
-faghat bebakhshid dar ravesh SVR vaghti c=1 migozashtam, kheili tool mikeshid(5 saat bishtar ke dighe motevaghefash mikardam) hata ba scale kardan. 
-baraye hamin shayad deghat model man khoob nashodeh.
-Rasm ham nafahmidam chetor har 5 ravesh ra mitoonam dar yek nemoodar biyavaram. ye dastoor koli neveshtam.
-
-Dar payan ham az shoma besyar sepasgozaram, babate elmi ke behem yad dadid, hich vaght fekr nimikardam betoonam Python ra yad begiram va azash khosham biyad.
-shoma aali tadris mikonid, Mamnoonam.
-Movafaghiyathayetan roozafzoon.
+Bale, motevajjeh shodam.
+chashm.
+Kheili Kheili Mamnoonam
 '''
 #-----------Import Libs----------------------
 import numpy as np
